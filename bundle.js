@@ -630,7 +630,7 @@ module.exports = self.fetch.bind(self);
 
 },{}],3:[function(require,module,exports){
 // Write your JavaScript code here!
-const { myFetch, pickPlanet, addDestinationInfo } = require("./scriptHelper");
+
 window.addEventListener("load", function () {
     const form = document.querySelector("form");
     let list = document.getElementById("faultyItems");
@@ -667,9 +667,8 @@ window.addEventListener("load", function () {
     })
 
 });
-},{"./scriptHelper":4}],4:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 // Write your helper functions here!
-
 require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
@@ -710,7 +709,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     if (validateInput(pilot.value) === `Empty` || validateInput(copilot.value) === `Empty` ||
         validateInput(fuelLevel.value) === `Empty` || validateInput(cargoLevel.value) === `Empty`) {
         alert(`All feilds are required`);
-        // list.style.visibility = hidden;
+        // list.style.visibility = visible;
     }
     // To check that fuelLevel and cargoLevel are numbers.chech pilot and copilot are string.
     else if (validateInput(fuelLevel.value) === `Not a Number` || validateInput(cargoLevel.value) === `Not a Number`) {
@@ -718,7 +717,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         list.style.visibility = visible;
     } else if (validateInput(pilot.value) === `Is a Number` || validateInput(copilot.value) === `Is a Number`) {
         alert(`Please don't enter numbers for pilot or co-pilot`);
-        // list.style.visibility = hidden;
+        list.style.visibility = visible;
     } else {
         pilotStatus.innerHTML = `pilot ${pilot.value} is ready for launch`;
         copilotStatus.innerHTML = `copilot ${copilot.value} is ready for launch`

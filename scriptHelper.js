@@ -1,5 +1,4 @@
 // Write your helper functions here!
-
 require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
@@ -37,21 +36,21 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let launchStatus = document.getElementById("launchStatus");
     //let list = document.getElementById("faultyItems")
     //check if user field are filled 
-    if (validateInput(pilot.value) === `Empty` || validateInput(copilot.value) === `Empty` ||
-        validateInput(fuelLevel.value) === `Empty` || validateInput(cargoLevel.value) === `Empty`) {
+    if (validateInput(pilot) === `Empty` || validateInput(copilot) === `Empty` ||
+        validateInput(fuelLevel) === `Empty` || validateInput(cargoLevel) === `Empty`) {
         alert(`All feilds are required`);
         // list.style.visibility = visible;
     }
     // To check that fuelLevel and cargoLevel are numbers.chech pilot and copilot are string.
-    else if (validateInput(fuelLevel.value) === `Not a Number` || validateInput(cargoLevel.value) === `Not a Number`) {
+    else if (validateInput(fuelLevel) === `Not a Number` || validateInput(cargoLevel) === `Not a Number`) {
         alert(`Make sure to enter valid information for each field!`)
         list.style.visibility = visible;
-    } else if (validateInput(pilot.value) === `Is a Number` || validateInput(copilot.value) === `Is a Number`) {
+    } else if (validateInput(pilot) === `Is a Number` || validateInput(copilot) === `Is a Number`) {
         alert(`Please don't enter numbers for pilot or co-pilot`);
-        // list.style.visibility = hidden;
+        list.style.visibility = visible;
     } else {
-        pilotStatus.innerHTML = `pilot ${pilot.value} is ready for launch`;
-        copilotStatus.innerHTML = `copilot ${copilot.value} is ready for launch`
+        pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
+        copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`
     }
 
     if (fuelLevel < 10000) {
@@ -61,8 +60,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         launchStatus.style.color = 'rgb(199, 37, 78)';
     } else if (fuelLevel >= 10000 && cargoLevel > 10000) {
         fuelStatus.innerHTML = `Fuel level high enough for launch`;
+        launchStatus.innerHTML = `Shuttle Not Ready for Launch`;
         list.style.visibility = 'visible';
-        launchStatus.innerHTML = 'Shuttle Not Ready for Launch';
         launchStatus.style.color = 'rgb(199, 37, 78)';
         cargoStatus.innerHTML = `Cargo mass too heavy for launch`;
     } else if (cargoLevel >= 10000) {
