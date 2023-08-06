@@ -3,7 +3,7 @@
 window.addEventListener("load", function () {
     const form = document.querySelector("form");
     let list = document.getElementById("faultyItems");
-    list.style.visibility = 'hidden';
+    list.style.visibility = 'visible';
     form.addEventListener("submit", (event) => {
         event.preventDefault();
         //list Dom 
@@ -21,6 +21,7 @@ window.addEventListener("load", function () {
     listedPlanetsResponse.then(function (result) {
         listedPlanets = result;
         console.log(listedPlanets);
+
     }).then(function () {
         console.log(listedPlanets);
         // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.

@@ -1,7 +1,7 @@
 // Write your helper functions here!
 require('isomorphic-fetch');
 
-function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
+function addDestinationInfo(document, name, diameter, star, distance, imageUrl, moons) {
     // Here is the HTML formatting for our mission target div.
     let missionTarget = document.getElementById("missionTarget");
     missionTarget.innerHTML = `
@@ -13,7 +13,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                     <li>Distance from Earth:${distance} </li>
                     <li>Number of Moons: ${moons}</li>
               </ol>
-                <img src="${imageUrl}">`;
+                <img src=${imageUrl}>`;
 
 }
 
@@ -39,7 +39,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     if (validateInput(pilot) === `Empty` || validateInput(copilot) === `Empty` ||
         validateInput(fuelLevel) === `Empty` || validateInput(cargoLevel) === `Empty`) {
         alert(`All feilds are required`);
-        // list.style.visibility = visible;
+        list.style.visibility = 'visible';
     }
     // To check that fuelLevel and cargoLevel are numbers.chech pilot and copilot are string.
     else if (validateInput(fuelLevel) === `Not a Number` || validateInput(cargoLevel) === `Not a Number`) {
@@ -47,7 +47,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         list.style.visibility = visible;
     } else if (validateInput(pilot) === `Is a Number` || validateInput(copilot) === `Is a Number`) {
         alert(`Please don't enter numbers for pilot or co-pilot`);
-        list.style.visibility = visible;
+        list.style.visibility = 'visible';
     } else {
         pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch`;
         copilotStatus.innerHTML = `Co-pilot ${copilot} is ready for launch`
